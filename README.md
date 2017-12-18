@@ -1,2 +1,3 @@
 # sensehat
-aaaaaaaaaaaaaa
+snake
+v0.1
