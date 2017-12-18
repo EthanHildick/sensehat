@@ -24,6 +24,8 @@ def move():
     
     if i == 'd':
       x1 += 1
+      if x1 > 7:
+        print('You Died')
       positionD = True
       positionA = False
       positionS = False
@@ -31,6 +33,8 @@ def move():
       
     elif i == 'a':
       x1 -= 1
+      if x1 < 0:
+        print('You Died')
       positionD = False
       positionA = True
       positionS = False
@@ -38,6 +42,8 @@ def move():
       
     elif i == 's':
       y1 += 1
+      if y1 > 7:
+        print('You Died')
       positionD = False
       positionA = False
       positionS = True
@@ -45,6 +51,8 @@ def move():
       
     elif i == 'w':
       y1 -= 1
+      if y1 < 0:
+        print('You Died')
       positionD = False
       positionA = False
       positionS = False
