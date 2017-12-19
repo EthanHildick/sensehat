@@ -19,72 +19,38 @@ def move():
   y1 = 1
   
   while alive == True:
-    i = input()
-    s.set_pixel(x1, y1, nothing)
-    
-    if i == 'd':
-      x1 += 1
-      if x1 > 7:
-        print('You Died')
-      positionD = True
-      positionA = False
-      positionS = False
-      positionW = False
+    #i = input()
+    #s.set_pixel(x1, y1, nothing)
+    for event in s.stick.get_events():
+      print(event.direction, event.action)
       
-    elif i == 'a':
-      x1 -= 1
-      if x1 < 0:
-        print('You Died')
-      positionD = False
-      positionA = True
-      positionS = False
-      positionW = False
+      if event.action == 'pressed' and event.direction == 'right':
+        x1 += 1
+        positionD = True
+        positionA = False
+        positionS = False
+        positionW = False
+        
+      if event.action == 'pressed' and event.direction == 'left':
+        x1 -= 1
+        positionD = False
+        positionA = True
+        positionS = False
+        positionW = False
+        
+      if event.action == 'pressed' and event.direction == 'down':
+        y1 += 1
+        positionD = False
+        positionA = False
+        positionS = True
+        positionW = False
+        
+      if event.action == 'pressed' and event.direction == 'up':
+        y1 -= 1
+        positionD = False
+        positionA = False
+        positionS = False
+        positionW = True
       
-    elif i == 's':
-      y1 += 1
-      if y1 > 7:
-        print('You Died')
-      positionD = False
-      positionA = False
-      positionS = True
-      positionW = False
-      
-    elif i == 'w':
-      y1 -= 1
-      if y1 < 0:
-        print('You Died')
-      positionD = False
-      positionA = False
-      positionS = False
-      positionW = True
-      
-    s.set_pixel(x1, y1, yellow)
-    time.sleep(1)
-    s.set_pixel(x1, y1, nothing)
-    
-    while positionD == True:
-      s.set_pixel(x1, y1, nothing)
-      x1 += 1
-      s.set_pixel(x1, y1, blue)
-      time.sleep(1)
-      
-    while positionA == True:
-      s.set_pixel(x1, y1, nothing)
-      x1 -= 1
-      s.set_pixel(x1, y1, blue)
-      time.sleep(1)
-      
-    while positionS == True:
-      s.set_pixel(x1, y1, nothing)
-      y1 += 1
-      s.set_pixel(x1, y1, blue)
-      time.sleep(1)
-    
-    while positionW == True:
-      s.set_pixel(x1, y1, nothing)
-      y1 -= 1
-      s.set_pixel(x1, y1, blue)
-      time.sleep(1)
+      s.set_pixel(x1, y1, yellow)
 move()
-  
-  
